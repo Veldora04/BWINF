@@ -5,7 +5,7 @@ public class Function {
     private double m;
     private double t;
 
-    public Function(Coordinate one, Coordinate two) {
+    public Function(Vector one, Vector two) {
         findFunction(one,two);
     }
 
@@ -25,7 +25,7 @@ public class Function {
         this.t = t;
     }
 
-    private void findFunction(Coordinate one, Coordinate two) {
+    private void findFunction(Vector one, Vector two) {
         try {
             double slope = (one.getY() - two.getY()) / (one.getX() - two.getX());
             setT(one.getY()-slope*one.getX());
@@ -35,10 +35,10 @@ public class Function {
         }
     }
 
-    public Coordinate intersection(Function other) {
+    public Vector intersection(Function other) {
         double x = (other.getT() - t)/(m - other.getM());
         double y = m*x + t;
-        return new Coordinate(x,y);
+        return new Vector(x,y);
     }
 
 }
